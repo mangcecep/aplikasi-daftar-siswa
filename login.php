@@ -1,5 +1,8 @@
 <?php
-include('templates/header.php'); ?>
+$title = 'LOGIN | APLIKASI DAFTAR SISWA';
+include('templates/header.php');
+
+?>
 
 <div class="main-content login-panel">
     <div class="login-body">
