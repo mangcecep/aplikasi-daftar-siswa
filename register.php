@@ -1,4 +1,6 @@
-<?php include('templates/header.php') ?>
+<?php
+$title = "REGISTER | APLIKASI DAFTAR SISWA";
+include('templates/header.php') ?>
 
 <div class="main-content login-panel">
     <div class="login-body">
