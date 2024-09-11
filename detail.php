@@ -10,7 +10,7 @@ include('db/detail.php');
         <div class="panel">
             <div class="panel-header py-4">
                 <h1>DETAIL SISWA </h1>
-                <a class="btn btn-success" href="/aplikasi-daftar-siswa/"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
+                <a class="btn btn-success" href="/"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
             </div>
             <div class="panel-body">
 

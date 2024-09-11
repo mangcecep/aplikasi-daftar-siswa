@@ -4,16 +4,22 @@ include("connection.php");
 
 
 if (isset($_POST['id'])) {
+    $id = $_id = $_POST['id'];
     $name = $_POST['name'];
     $class = $_POST['class'];
     $age = $_POST['age'];
     $major = $_POST['major'];
     $keterangan = $_POST['keterangan'];
 
-    $sql = "UPDATE students SET name='$name', class='$class', age='$age', major='$major', keterangan='$keterangan'";
+    $sql = "UPDATE students SET name='$name', class='$class', age='$age', major='$major', keterangan='$keterangan' WHERE id=$id";
 
     if ($connections->query($sql)) {
-        header("location: http://localhost/aplikasi-daftar-siswa/");
+
+        session_start();
+
+        $_SESSION['updated'] = "Student has been updated successfully!";
+
+        header("location: http://localhost:8000/");
         $connections->close();
     }
 

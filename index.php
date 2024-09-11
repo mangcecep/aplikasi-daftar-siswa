@@ -1,4 +1,5 @@
 <?php
+
 $title = 'HOME | DASHBOARD';
 include('templates/header.php');
 include('db/data.php');
@@ -11,9 +12,37 @@ $number = 1;
         <div class="panel">
             <div class="panel-header py-4">
                 <h1>DAFTAR SISWA</h1>
-                <a class="btn btn-success" href="/aplikasi-daftar-siswa/student-create.php"><i class="fa-solid fa-plus"></i> Tambah</a>
+                <a class="btn btn-success" href="/student-create.php"><i class="fa-solid fa-plus"></i> Tambah</a>
             </div>
             <div class="panel-body">
+
+                <?php if (isset($_SESSION['message'])) : ?>
+                    <div class="alert alert-success text-center">
+                        <?php
+                        echo $_SESSION['message'];
+                        unset($_SESSION['message']);
+                        ?>
+                    </div>
+                <?php endif ?>
+
+                <?php if (isset($_SESSION['deleted'])) : ?>
+                    <div class="alert alert-danger text-center">
+                        <?php
+                        echo $_SESSION['deleted'];
+                        unset($_SESSION['deleted']);
+                        ?>
+                    </div>
+                <?php endif ?>
+
+                <?php if (isset($_SESSION['updated'])) : ?>
+                    <div class="alert alert-info text-center">
+                        <?php
+                        echo $_SESSION['updated'];
+                        unset($_SESSION['updated']);
+                        ?>
+                    </div>
+                <?php endif ?>
+
                 <table class="table table-dashed recent-order-table" id="myTable">
                     <thead>
                         <tr>
@@ -52,8 +81,8 @@ $number = 1;
                                         ?></td>
                                 <td>
                                     <div class="btn-box">
-                                        <a href="/aplikasi-daftar-siswa/detail.php?id=<?= $student['id']  ?>"><i class="fa-light fa-eye"></i></a>
-                                        <a href="/aplikasi-daftar-siswa/student-update.php?id=<?= $student['id'] ?>"><i class="fa-light fa-pen"></i></a>
+                                        <a href="/detail.php?id=<?= $student['id']  ?>"><i class="fa-light fa-eye"></i></a>
+                                        <a href="/student-update.php?id=<?= $student['id'] ?>"><i class="fa-light fa-pen"></i></a>
                                         <button
                                             onclick="deleteConfirmation()">
                                             <i class="fa-light fa-trash"></i>
@@ -72,7 +101,7 @@ $number = 1;
 <script>
     function deleteConfirmation() {
         if (confirm('are you sure want to delete this data?') == true) {
-            window.location.href = '/aplikasi-daftar-siswa/db/delete.php?id=<?= $student['id'] ?>'
+            window.location.href = '/db/delete.php?id=<?= $student['id'] ?>'
         }
     }
 </script>

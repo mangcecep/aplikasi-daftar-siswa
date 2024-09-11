@@ -2,7 +2,7 @@
 
 $server = 'localhost';
 $username = 'root';
-$password = '';
+$password = 'Awaslupa1234';
 $db_name = 'daftar_siswa';
 
 $connections = new mysqli($server, $username, $password, $db_name);
