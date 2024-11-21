@@ -1,12 +1,7 @@
 <?php
 session_start();
 
-var_dump($_SESSION['is_login']);
-
-session_unset();
-session_destroy();
-
-if (isset($_SESSION['is_login']) == false) {
+if (isset($_SESSION['is_auth']) == false) {
     header("location: http://localhost:8000/login.php");
 }
 

@@ -12,6 +12,7 @@ if (isset($_POST['id'])) {
     $keterangan = $_POST['keterangan'];
 
     $sql = "UPDATE students SET name='$name', class='$class', age='$age', major='$major', keterangan='$keterangan' WHERE id=$id";
+    $sql = "UPDATE students SET name='$name', class='$class', age='$age', major='$major', keterangan='$keterangan' WHERE id=$id";
 
     if ($connections->query($sql)) {
         session_start();

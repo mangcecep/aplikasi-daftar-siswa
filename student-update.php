@@ -1,8 +1,12 @@
 <?php
 $title = 'FORM UPDATE SISWA | APLIKASI DAFTAR SISWA';
-if (isset($_SESSION['is_login']) == false) {
+
+session_start();
+
+if (isset($_SESSION['is_auth']) == false) {
     header("location: http://localhost:8000/login.php");
 }
+
 include('templates/header.php');
 include('db/update.php');
 

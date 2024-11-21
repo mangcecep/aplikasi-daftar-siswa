@@ -1,6 +1,8 @@
 <?php
 session_start();
-
+if ($_SESSION['is_auth'] = true) {
+    header('location: http://localhost:8000');
+}
 $title = "REGISTER | APLIKASI DAFTAR SISWA";
 include('templates/header.php') ?>
 
@@ -14,6 +16,7 @@ include('templates/header.php') ?>
         </div>
         <div class="bottom">
             <h3 class="panel-title">Registration</h3>
+
             <?php if (isset($_SESSION['error'])) : ?>
                 <div class="alert alert-danger text-center">
                     <?php
@@ -22,6 +25,7 @@ include('templates/header.php') ?>
                     ?>
                 </div>
             <?php endif ?>
+
             <form method="POST" action="/db/register.php">
                 <div class="input-group mb-25">
                     <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
@@ -30,7 +34,7 @@ include('templates/header.php') ?>
                         class="form-control"
                         placeholder="Full Name"
                         name="full_name"
-                        value="<?= isset($_SESSION["full_name"]) ? $_SESSION["full_name"] : '' ?>">
+                        value="<?= isset($_SESSION['full_name']) ? $_SESSION['full_name'] : "" ?>">
                 </div>
                 <div class="input-group mb-25">
                     <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
@@ -39,7 +43,7 @@ include('templates/header.php') ?>
                         class="form-control"
                         placeholder="Email"
                         name="email"
-                        value="<?= isset($_SESSION["email"]) ? $_SESSION["email"] : '' ?>">
+                        value="<?= isset($_SESSION['email']) ? $_SESSION['email'] : "" ?>">
                 </div>
                 <div class="input-group mb-20">
                     <span class="input-group-text"><i class="fa-regular fa-lock"></i></span>
@@ -51,10 +55,9 @@ include('templates/header.php') ?>
                     <a role="button" class="password-show"><i class="fa-duotone fa-eye"></i></a>
                 </div>
 
-                <button class="btn btn-primary w-100 login-btn" type="submit">Sign up</button>
-                <div class="mt-3">Have you an accout?
-                    <a href="/login.php">Click here</a>
-                </div>
+                <button class="btn btn-primary w-100 login-btn">Sign up</button>
+                <div class="mt-2">have an account? <a href="/login.php" class="text-white fs-14">Click Here!</a></div>
+
             </form>
         </div>
     </div>
