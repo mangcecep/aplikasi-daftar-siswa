@@ -10,12 +10,11 @@ include('db/detail.php');
         <div class="panel">
             <div class="panel-header py-4">
                 <h1>DETAIL SISWA </h1>
-                <a class="btn btn-success" href="/aplikasi-daftar-siswa/"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
+                <a class="btn btn-success" href="/"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
             </div>
             <div class="panel-body">
 
                 <?php if ($student->num_rows > 0) { ?>
-
                     <table class="table table-dashed recent-order-table" id="myTable">
                         <thead>
                             <?php foreach ($student as $detail) : ?>

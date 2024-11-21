@@ -1,4 +1,7 @@
 <?php
+if (isset($_SESSION['is_auth']) == false) {
+    header("location: http://localhost:8000/login.php");
+}
 $title = 'FORM DAFTAR SISWA | APLIKASI DAFTAR SISWA';
 include('templates/header.php');
 
@@ -7,11 +10,11 @@ include('templates/header.php');
 <div class="main-content login-panel">
     <div class="login-body">
         <div class="top d-flex justify-content-between align-items-center">
-            <a href="/aplikasi-daftar-siswa"><i class="fa-duotone fa-house-chimney"></i></a>
+            <a href="/"><i class="fa-duotone fa-house-chimney"></i></a>
         </div>
         <div class="bottom">
-            <h3 class="panel-title">STUDENT CREATE</h3>
-            <form method="POST" action="/aplikasi-daftar-siswa/db/create.php">
+            <h3 class="panel-title">STUDENT CREATE <?= $_SESSION['angka'] ?></h3>
+            <form method="POST" action="/db/create.php">
                 <div class="input-group mb-25">
                     <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
                     <input type="text" class="form-control" placeholder="Name" name="name">

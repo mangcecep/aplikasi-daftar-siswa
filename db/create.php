@@ -10,7 +10,9 @@ $keterangan = htmlspecialchars($_POST['keterangan']);
 $sql = "INSERT INTO students(name, class, age, major, keterangan) VALUES ('$name', '$class', $age, '$major', '$keterangan');";
 
 if ($connections->query($sql)) {
-    header("location: http://localhost/aplikasi-daftar-siswa/");
+    session_start();
+    $_SESSION['message'] = "Student has been added successfully";
+    header("location: http://localhost:8000/");
     $connections->close();
 
     die();

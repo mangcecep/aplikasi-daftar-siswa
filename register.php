@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $title = "REGISTER | APLIKASI DAFTAR SISWA";
 include('templates/header.php') ?>
 
@@ -12,29 +14,47 @@ include('templates/header.php') ?>
         </div>
         <div class="bottom">
             <h3 class="panel-title">Registration</h3>
-            <form>
+            <?php if (isset($_SESSION['error'])) : ?>
+                <div class="alert alert-danger text-center">
+                    <?php
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
+                    ?>
+                </div>
+            <?php endif ?>
+            <form method="POST" action="/db/register.php">
                 <div class="input-group mb-25">
                     <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
-                    <input type="text" class="form-control" placeholder="Full Name">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Full Name"
+                        name="full_name"
+                        value="<?= isset($_SESSION["full_name"]) ? $_SESSION["full_name"] : '' ?>">
                 </div>
                 <div class="input-group mb-25">
                     <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Email"
+                        name="email"
+                        value="<?= isset($_SESSION["email"]) ? $_SESSION["email"] : '' ?>">
                 </div>
                 <div class="input-group mb-20">
                     <span class="input-group-text"><i class="fa-regular fa-lock"></i></span>
-                    <input type="password" class="form-control rounded-end" placeholder="Password">
+                    <input
+                        type="password"
+                        class="form-control rounded-end"
+                        placeholder="Password"
+                        name="password">
                     <a role="button" class="password-show"><i class="fa-duotone fa-eye"></i></a>
                 </div>
-                <div class="d-flex justify-content-between mb-25">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="loginCheckbox">
-                        <label class="form-check-label text-white" for="loginCheckbox">
-                            I agree <a href="#" class="text-white text-decoration-underline">Terms & Policy</a>
-                        </label>
-                    </div>
+
+                <button class="btn btn-primary w-100 login-btn" type="submit">Sign up</button>
+                <div class="mt-3">Have you an accout?
+                    <a href="/login.php">Click here</a>
                 </div>
-                <button class="btn btn-primary w-100 login-btn">Sign up</button>
             </form>
         </div>
     </div>
