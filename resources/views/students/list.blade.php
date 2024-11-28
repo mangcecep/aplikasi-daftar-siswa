@@ -140,14 +140,18 @@
                                     class="img-thumbnail" src="{{ $d->photo_profile }}" />
                             </td>
                             <td>
-                                <div class="d-flex jutify-content-center">
+                                <div class="d-flex jutify-content-between gap-2">
                                     <a
                                         class="btn btn-warning"
                                         href="{{ route('list-siswa.show', $d->id) }}">
                                         <i class="fa-solid fa-edit"></i>
                                     </a>
-                                    <form>
-                                        <button class="btn btn-danger ml-3">
+                                    <form method="POST" action="{{ route('list-siswa.destroy', $d->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button
+                                            type="submit"
+                                            class="btn btn-danger ml-3">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>

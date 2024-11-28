@@ -11,6 +11,7 @@ class ListStudent extends Model
         "classes",
         "major",
         "birth_date",
-        "photo_profile"
+        "photo_profile",
+        "photo_profile_name"
     ];
 }

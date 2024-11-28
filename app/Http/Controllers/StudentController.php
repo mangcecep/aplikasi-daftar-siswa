@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ListStudent;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class StudentController extends Controller
 {
@@ -41,6 +42,7 @@ class StudentController extends Controller
         $student->major = $request->major;
         $student->birth_date = $request->birth_date;
         $student->photo_profile = url('/upload/profile') . '/' . $doc;
+        $student->photo_profile_name = $doc;
         $student->save();
         return redirect('/list-siswa')->with('success', 'Student has added successfully!');
     }
@@ -66,6 +68,13 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $student = new ListStudent;
+        $data = $student->find($id);
+        $path = public_path($data->photo_profile);
+        File::deleteDirectory($path);
+
+        $data->delete();
+
+        return redirect('/list-siswa')->with('success', 'Student has deleted successfully!');
     }
 }
